@@ -9,3 +9,18 @@ Students have to write the CloudFormation code using this YAML template for buil
 Students may use a JSON file for increasing the generic nature of the YAML code. For example, the JSON file contains a "ParameterKey" as "EnvironmentName" and "ParameterValue" as "UdacityProject". 
 
 In YAML code, the `${EnvironmentName}` would be substituted with `UdacityProject` accordingly.
+
+
+### How to run the supporting material?
+You can run the supporting material in two easy steps:
+```bash
+# Ensure that the AWS CLI is configured before runniing the command below
+# Create the network infrastructure
+# Check the region in the create.sh file
+./create.sh  udm-servers udm-servers.yml udm-servers-params.json
+# Create servers
+# Change the AMI ID and key-pair name in the servers.yml
+# Check the region in the update.sh file
+./create.sh  udm-intra udm-intra.yml udm-intra-params.json
+```
+
