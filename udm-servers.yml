@@ -1,6 +1,6 @@
 Description:
   Khalil EL. /
-  This CloudFormation template to deploy the servers for the Udagram project.
+  This CloudFormation template deploys the servers for the Udagram project.
 
 Parameters:
   # Paramenters are entirely optional.
@@ -56,6 +56,10 @@ Resources:
         FromPort: 80
         ToPort: 80
         CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 8080
+        ToPort: 8080
+        CidrIp: 0.0.0.0/0  
   WebServerSecGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -65,8 +69,8 @@ Resources:
           !Sub "${EnvironmentName}-VPCID"
       SecurityGroupIngress:
       - IpProtocol: tcp
-        FromPort: 8080
-        ToPort: 8080
+        FromPort: 80
+        ToPort: 80
         CidrIp: 0.0.0.0/0
       - IpProtocol: tcp
         FromPort: 22
@@ -83,13 +87,14 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
-          apt-get update -y
-          apt-get install unzip awscli -y
-          apt-get install apache2 -y
-          systemctl start apache2.service
+          sudo apt-get update -y
+          sudo apt-get install unzip awscli -y
+          sudo apt-get install apache2 -y
+          sudo systemctl start apache2.service
           cd /var/www/html
           aws s3 cp s3://my750342525651bucket/udagram-web-app.zip .
-          unzip -o udagram-web-app.zip      
+          unzip -o udagram-web-app.zip
+          sudo systemctl restart apache2.service 
       # ToDo: AMI ID of Ubuntu Linux machine. Too get one, try creating a VM from the web console. 
       ImageId: ami-0ac73f33a1888c64a
       IamInstanceProfile: !Ref ProfileWithRolesForApp
