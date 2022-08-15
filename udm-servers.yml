@@ -90,7 +90,6 @@ Resources:
           cd /var/www/html
           aws s3 cp s3://my750342525651bucket/udagram-web-app.zip .
           unzip -o udagram-web-app.zip
-          sudo systemctl restart apache2.service 
       # ToDo: AMI ID of Ubuntu Linux machine. Too get one, try creating a VM from the web console. 
       ImageId: ami-0ac73f33a1888c64a
       IamInstanceProfile: !Ref ProfileWithRolesForApp
