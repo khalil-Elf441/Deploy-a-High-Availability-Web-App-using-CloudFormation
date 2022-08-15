@@ -15,12 +15,12 @@ In YAML code, the `${EnvironmentName}` would be substituted with `UdacityProject
 You can run the supporting material in two easy steps:
 ```bash
 # Create servers
-# Create the network servers
+# Create the network infrastructure
 # Check the region in the create.sh file
 ./create.sh  udm-intra udm-intra.yml udm-intra-params.json
 
 # Ensure that the AWS CLI is configured before runniing the command below
-# Create the network infrastructure
+# Create the application servers
 # Check the region in the create.sh file
 ./create.sh  udm-servers udm-servers.yml udm-servers-params.json
 ```
