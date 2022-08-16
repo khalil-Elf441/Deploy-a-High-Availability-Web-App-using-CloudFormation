@@ -95,7 +95,7 @@ To check whether the web application is running, follow the web application publ
 
 <br>
 
-![WebApp](Screenshot/WebApp_Running.png)
+![WebApp](Screenshot/WebApp_Running.PNG)
 
 <br>
 
